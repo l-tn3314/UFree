@@ -39,8 +39,14 @@ public class sendActivity extends AppCompatActivity
     @Bind(R.id.sendbutton)
     Button button;
 
-    @Bind(R.id.edit_message)
-    TextView msg;
+    @Bind(R.id.username)
+    TextView msgU;
+
+    @Bind(R.id.question)
+    TextView msgQ;
+
+    @Bind(R.id.friends)
+    TextView msgF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +71,14 @@ public class sendActivity extends AppCompatActivity
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = msg.getText().toString();
+                String question = msgQ.getText().toString();
+                String recipients = msgF.getText().toString();
+                String sender = msgU.getText().toString();
+
                 ParseQuery<ParseInstallation> matchingNums = ParseQuery.getQuery(ParseInstallation.class);
                 matchingNums.whereContains("phonenumber", "3205587854");
 
-
-                String sampleUsers = "gaboc,trentolol";
-
-                String[] step1Users =sampleUsers.split(",");
+                String[] step1Users =recipients.split(",");
 
                 ArrayList proUsers = new ArrayList();
 
@@ -80,21 +86,19 @@ public class sendActivity extends AppCompatActivity
                     proUsers.add(step1Users[x]);
                 }
 
-         //       Based Josh
-         //       Log.i("TEST", message);
-         //       ParshPush push = new ParsePush();
-         //       push.setMessage(message);
-         //       push.setQuery(matchingNums);
-         //       push.sendInBackground();
+
+                Log.i("TEST", question);
+                ParsePush push = new ParsePush();
+                push.setMessage(question);
+                push.setQuery(matchingNums);
+                push.sendInBackground();
 
 
                 ParseObject ques = new ParseObject("Question");
-                ques.put("question", message);
-                ques.put("sender", "---");
+                ques.put("question", question);
+                ques.put("sender", sender);
                 ques.put("recipients", proUsers);
                 ques.saveInBackground();
-
-
 
 
 
