@@ -26,9 +26,13 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import android.widget.EditText;
+import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.EditorInfo;
 
 //import com.parse.Parse;
 //import com.parse.ParseInstallation;
+
 
 
 public class sendActivity extends AppCompatActivity
@@ -73,23 +77,31 @@ public class sendActivity extends AppCompatActivity
                 String recipients = msgF.getText().toString();
                 String sender = msgU.getText().toString();
 
-                ParseQuery<ParseInstallation> matchingNums = ParseQuery.getQuery(ParseInstallation.class);
-                matchingNums.whereContains("phonenumber", "3205587854");
+                ParseQuery<ParseInstallation> database = ParseQuery.getQuery(ParseInstallation.class);
+                database.whereNotEqualTo("username", sender);
 
-                String[] step1Users =recipients.split(",");
+
+                String[] step1Users = recipients.split(",");
 
                 ArrayList proUsers = new ArrayList();
 
                 for (int x = 0; x < step1Users.length; x++) {
                     proUsers.add(step1Users[x]);
+
+                    database.whereEqualTo("username", proUsers.get(x));
+
+                    Log.i("TEST", question);
+                    ParsePush push = new ParsePush();
+                    push.setMessage(question);
+                    push.setQuery(database);
+                    push.sendInBackground();
+
+
                 }
 
 
-                Log.i("TEST", question);
-                ParsePush push = new ParsePush();
-                push.setMessage(question);
-                push.setQuery(matchingNums);
-                push.sendInBackground();
+
+
 
 
                 ParseObject ques = new ParseObject("Question");
