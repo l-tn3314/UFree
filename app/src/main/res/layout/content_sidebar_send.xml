@@ -16,9 +16,10 @@
         android:layout_weight="1"
         android:layout_gravity="center_vertical"/>
     <Button
+        android:id="@+id/sendbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_yes"
+        android:text="@string/button_send"
         android:layout_gravity="center" />
 
 </LinearLayout>

@@ -10,7 +10,16 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
+import com.parse.ParseQuery;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 //import com.parse.Parse;
 //import com.parse.ParseInstallation;
@@ -19,12 +28,17 @@ import android.widget.Button;
 public class sendActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    @Bind(R.id.sendbutton)
     Button button;
+
+    @Bind(R.id.edit_message)
+    TextView msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sidebar_send);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -39,6 +53,22 @@ public class sendActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = msg.getText().toString();
+                ParseQuery<ParseInstallation> matchingNums = ParseQuery.getQuery(ParseInstallation.class);
+                matchingNums.whereContains("phonenumber", "3205587854");
+
+
+                Log.i("TEST", message);
+                ParsePush push = new ParsePush();
+                push.setMessage(message);
+                push.setQuery(matchingNums);
+                push.sendInBackground();
+            }
+        });
 
 
         //Parse.initialize(this, "SU7KXmgEwwa1zIlH0n5p36rQHpto6XMGiYfsLxyH", "TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7");

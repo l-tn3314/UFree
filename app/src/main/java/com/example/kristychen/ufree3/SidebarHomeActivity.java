@@ -1,6 +1,7 @@
 package com.example.kristychen.ufree3;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,8 +17,14 @@ import android.widget.Button;
 import android.view.View.OnClickListener;
 
 
+import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseInstallation;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 public class SidebarHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +51,18 @@ public class SidebarHomeActivity extends AppCompatActivity
         addListenerOnButton2();
         Parse.initialize(this, "SU7KXmgEwwa1zIlH0n5p36rQHpto6XMGiYfsLxyH", "TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7");
         ParseInstallation.getCurrentInstallation().saveInBackground();
+        ParseInstallation.getCurrentInstallation().put("phonenumber", "3205587854");
+
+        ParseQuery<ParseObject> questions = ParseQuery.getQuery("Question");
+        questions.whereContains("question", "easy");
+        questions.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                for (ParseObject obj : objects) {
+                    Log.i("TEST", "The question is: " + obj.getString("question") + " and the answer is: " + obj.getString("answer"));
+                }
+            }
+        });
     }
 
 
