@@ -15,6 +15,7 @@
         android:layout_gravity="center"
         android:layout_weight="0.07"
         android:text="Enter Credentials"
+        android:textColor="#087CC4"
         android:textSize="50dp" />
     <EditText
         android:id="@+id/loginuser"
@@ -35,10 +36,20 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.07" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.1" />
+
     <Button
         android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up" />
+        android:text="Sign Up"
+        android:textColor="#FFFAF0"
+        android:background="#087CC4"
+        android:width="350dp"/>
+
+
 
 </LinearLayout>

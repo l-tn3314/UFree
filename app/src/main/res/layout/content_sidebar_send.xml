@@ -41,9 +41,14 @@ android:weightSum="1">
 
 <Button
     android:id="@+id/sendbutton"
-    android:layout_width="112dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/button_send"
-    android:layout_gravity="center" />
+    android:layout_gravity="center_horizontal"
+    android:textColor="#FFFAF0"
+    android:background="#087CC4"
+    android:width="350dp"/>
+
+
 
 </LinearLayout>

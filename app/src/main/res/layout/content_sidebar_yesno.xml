@@ -13,27 +13,39 @@
 
 
     <TextView
-        android:layout_width="290dp"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""
         android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.18" />
+        android:layout_weight="0.28" />
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_yes"
         android:id="@+id/yesButton"
-        android:layout_gravity="center" />
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFFAF0"
+        android:background="#087CC4"
+        android:width="350dp"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="0.1" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:text="@string/button_no"
         android:id="@+id/noButton"
-        android:autoLink="all"/>
+        android:autoLink="all"
+        android:textColor="#FFFAF0"
+        android:background="#087CC4"
+        android:width="350dp"/>
+
 
 
 </LinearLayout>
