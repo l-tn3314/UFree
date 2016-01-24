@@ -98,15 +98,16 @@ public class sendActivity extends AppCompatActivity
                     push.setQuery(database);
                     push.sendInBackground();
 
+                    ParseObject ques = new ParseObject("Question");
+                    ques.put("question", question);
+                    ques.put("sender", sender);
+                    ques.put("recipient", proUsers.get(x));
+                    ques.saveInBackground();
+
                 }
 
 
 
-                ParseObject ques = new ParseObject("Question");
-                ques.put("question", question);
-                ques.put("sender", sender);
-                ques.put("recipients", proUsers);
-                ques.saveInBackground();
 
                 finish();
 
