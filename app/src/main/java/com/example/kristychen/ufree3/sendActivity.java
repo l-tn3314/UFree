@@ -67,6 +67,12 @@ public class sendActivity extends AppCompatActivity
                 push.setMessage(message);
                 push.setQuery(matchingNums);
                 push.sendInBackground();
+
+                ParseObject ques = new ParseObject("Question");
+                ques.put("question", message);
+                ques.put("user", "---");
+                ques.saveInBackground();
+
             }
         });
 
