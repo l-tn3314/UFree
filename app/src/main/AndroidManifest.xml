@@ -50,6 +50,12 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <activity
+            android:label="@string/app_name"
+            android:name=".resultActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
 
         <activity
             android:label="@string/app_name"
@@ -65,6 +71,7 @@
                 <action android:name="com.parse.push.intent.RECEIVE" />
                 <action android:name="com.parse.push.intent.DELETE" />
                 <action android:name="com.parse.push.intent.OPEN" />
+                <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.parse.GcmBroadcastReceiver"
@@ -87,16 +94,8 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7" />
         <meta-data android:name="com.parse.push.notification_icon"
-            android:resource="@drawable/ic_friends"/>
- <!--       <receiver
-            android:name="com.example.kristychen.ufree3.Receiver"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.parse.push.intent.RECEIVE" />
-                <action android:name="com.parse.push.intent.DELETE" />
-                <action android:name="com.parse.push.intent.OPEN" />
-            </intent-filter>
-        </receiver> -->
+            android:resource="@drawable/ic_launcher"/>
+
 
     </application>
 
