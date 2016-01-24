@@ -171,8 +171,9 @@ public class SidebarHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            finish();
         } else if (id == R.id.nav_friend) {
+
 
         }
 

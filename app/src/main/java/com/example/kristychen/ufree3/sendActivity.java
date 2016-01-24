@@ -28,9 +28,13 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import android.widget.EditText;
+import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.EditorInfo;
 
 //import com.parse.Parse;
 //import com.parse.ParseInstallation;
+
 
 
 public class sendActivity extends AppCompatActivity
@@ -39,8 +43,14 @@ public class sendActivity extends AppCompatActivity
     @Bind(R.id.sendbutton)
     Button button;
 
-    @Bind(R.id.edit_message)
-    TextView msg;
+    @Bind(R.id.username)
+    TextView msgU;
+
+    @Bind(R.id.question)
+    TextView msgQ;
+
+    @Bind(R.id.friends)
+    TextView msgF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,37 +76,41 @@ public class sendActivity extends AppCompatActivity
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = msg.getText().toString();
-                ParseQuery<ParseInstallation> matchingNums = ParseQuery.getQuery(ParseInstallation.class);
-                matchingNums.whereContains("phonenumber", "3205587854");
+                String question = msgQ.getText().toString();
+                String recipients = msgF.getText().toString();
+                String sender = msgU.getText().toString();
+
+                ParseQuery<ParseInstallation> database = ParseQuery.getQuery(ParseInstallation.class);
+                database.whereNotEqualTo("username", sender);
 
 
-                String sampleUsers = "gaboc,trentolol";
-
-                String[] step1Users =sampleUsers.split(",");
+                String[] step1Users = recipients.split(",");
 
                 ArrayList proUsers = new ArrayList();
 
                 for (int x = 0; x < step1Users.length; x++) {
                     proUsers.add(step1Users[x]);
+
+                    database.whereEqualTo("username", proUsers.get(x));
+
+                    Log.i("TEST", question);
+                    ParsePush push = new ParsePush();
+                    push.setMessage(question);
+                    push.setQuery(database);
+                    push.sendInBackground();
+
+
                 }
 
-         //       Based Josh
-         //       Log.i("TEST", message);
-         //       ParshPush push = new ParsePush();
-         //       push.setMessage(message);
-         //       push.setQuery(matchingNums);
-         //       push.sendInBackground();
 
 
                 ParseObject ques = new ParseObject("Question");
-                ques.put("question", message);
-                ques.put("sender", "---");
+                ques.put("question", question);
+                ques.put("sender", sender);
                 ques.put("recipients", proUsers);
                 ques.saveInBackground();
 
-
-
+                finish();
 
 
             }
@@ -146,7 +160,10 @@ public class sendActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         if (id == R.id.nav_home) {
+
+            finish();
 
         } else if (id == R.id.nav_friend) {
 
