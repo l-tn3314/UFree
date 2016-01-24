@@ -101,15 +101,13 @@ public class sendActivity extends AppCompatActivity
 
 
 
-
-
-
                 ParseObject ques = new ParseObject("Question");
                 ques.put("question", question);
                 ques.put("sender", sender);
                 ques.put("recipients", proUsers);
                 ques.saveInBackground();
 
+                finish();
 
 
             }
@@ -160,7 +158,7 @@ public class sendActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            finish();
         } else if (id == R.id.nav_gallery) {
 
         }

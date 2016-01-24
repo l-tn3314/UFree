@@ -63,6 +63,10 @@ public class SidebarHomeActivity extends AppCompatActivity
                 }
             }
         });
+
+
+
+
     }
 
 
@@ -131,7 +135,7 @@ public class SidebarHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            finish();
         } else if (id == R.id.nav_gallery) {
 
         }
