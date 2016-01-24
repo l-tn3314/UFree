@@ -23,7 +23,8 @@
         android:hint="Username"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.20"
-        android:imeOptions="actionDone"/>
+        android:imeOptions="actionNext"
+        android:singleLine="true"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -33,7 +34,9 @@
         android:ems="10"
         android:id="@+id/pwd"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07" />
+        android:layout_weight="0.07"
+        android:imeOptions="actionDone"
+        android:singleLine="true"/>
 
     <Button
         android:id="@+id/signup"

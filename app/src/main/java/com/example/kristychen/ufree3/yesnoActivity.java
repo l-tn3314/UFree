@@ -21,6 +21,7 @@ import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParsePush;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,9 +90,12 @@ public class yesnoActivity extends AppCompatActivity
                 ParseQuery<ParseInstallation> database = ParseQuery.getQuery(ParseInstallation.class);
                 ParseObject ans = new ParseObject("Response");
                 String yolo = text.getText().toString();
+                String user = ParseUser.getCurrentUser().getString("username");
                 ans.put("answer", "Yes");
                 ans.put("question", yolo);
+                ans.put("responder", user);
                 ans.saveInBackground();
+                finish();
             }
         });
 
@@ -101,9 +105,12 @@ public class yesnoActivity extends AppCompatActivity
                 ParseQuery<ParseInstallation> database = ParseQuery.getQuery(ParseInstallation.class);
                 ParseObject ans = new ParseObject("Response");
                 String yolo = text.getText().toString();
+                String user = ParseUser.getCurrentUser().getString("username");
                 ans.put("answer", "No");
                 ans.put("question", yolo);
+                ans.put("responder", user);
                 ans.saveInBackground();
+                finish();
             }
         });
 

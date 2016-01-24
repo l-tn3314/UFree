@@ -23,6 +23,7 @@ import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParsePush;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
@@ -43,8 +44,6 @@ public class sendActivity extends AppCompatActivity
     @Bind(R.id.sendbutton)
     Button button;
 
-    @Bind(R.id.username)
-    TextView msgU;
 
     @Bind(R.id.question)
     TextView msgQ;
@@ -78,7 +77,10 @@ public class sendActivity extends AppCompatActivity
             public void onClick(View v) {
                 String question = msgQ.getText().toString();
                 String recipients = msgF.getText().toString();
-                String sender = msgU.getText().toString();
+
+
+
+                String sender = ParseUser.getCurrentUser().getString("username");
 
                 ParseQuery<ParseInstallation> database = ParseQuery.getQuery(ParseInstallation.class);
 
