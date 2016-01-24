@@ -63,6 +63,10 @@ public class SidebarHomeActivity extends AppCompatActivity
                 }
             }
         });
+
+
+
+
     }
 
 
@@ -130,9 +134,10 @@ public class SidebarHomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_friend) {
+        if (id == R.id.nav_camera) {
+            finish();
+        } else if (id == R.id.nav_gallery) {
+
 
         }
 

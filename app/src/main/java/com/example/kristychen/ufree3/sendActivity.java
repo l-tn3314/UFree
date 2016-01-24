@@ -103,15 +103,13 @@ public class sendActivity extends AppCompatActivity
 
 
 
-
-
-
                 ParseObject ques = new ParseObject("Question");
                 ques.put("question", question);
                 ques.put("sender", sender);
                 ques.put("recipients", proUsers);
                 ques.saveInBackground();
 
+                finish();
 
 
             }
@@ -161,10 +159,10 @@ public class sendActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, SidebarHomeActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_friend) {
+
+        if (id == R.id.nav_camera) {
+            finish();
+        } else if (id == R.id.nav_gallery) {
 
         }
 
