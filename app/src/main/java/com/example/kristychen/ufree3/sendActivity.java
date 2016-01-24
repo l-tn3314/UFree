@@ -14,9 +14,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseInstallation;
-import com.parse.ParsePush;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -62,16 +67,33 @@ public class sendActivity extends AppCompatActivity
                 matchingNums.whereContains("phonenumber", "3205587854");
 
 
-                Log.i("TEST", message);
-                ParsePush push = new ParsePush();
-                push.setMessage(message);
-                push.setQuery(matchingNums);
-                push.sendInBackground();
+                String sampleUsers = "gaboc,trentolol";
+
+                String[] step1Users =sampleUsers.split(",");
+
+                ArrayList proUsers = new ArrayList();
+
+                for (int x = 0; x < step1Users.length; x++) {
+                    proUsers.add(step1Users[x]);
+                }
+
+         //       Based Josh
+         //       Log.i("TEST", message);
+         //       ParshPush push = new ParsePush();
+         //       push.setMessage(message);
+         //       push.setQuery(matchingNums);
+         //       push.sendInBackground();
+
 
                 ParseObject ques = new ParseObject("Question");
                 ques.put("question", message);
-                ques.put("user", "---");
+                ques.put("sender", "---");
+                ques.put("recipients", proUsers);
                 ques.saveInBackground();
+
+
+
+
 
             }
         });
