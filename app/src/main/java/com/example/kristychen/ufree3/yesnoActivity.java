@@ -69,20 +69,18 @@ public class yesnoActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        try {
+
+            ParseQuery<ParseObject> dbq = ParseQuery.getQuery("Question");
+            String user = ParseUser.getCurrentUser().getString("username");
+            dbq.whereEqualTo("sender", user).orderByDescending("createdAt");
+            String ques = dbq.getFirst().getString("question");
+            text.setText(ques);
+        } catch (Exception e) {
+        }
 
 
-        ParseQuery<ParseObject> questions = ParseQuery.getQuery("Question");
-        questions.orderByAscending("CreatedDate").setLimit(1);
-        questions.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                for (ParseObject obj : objects) {
-                    Log.i("TEST", "The question is: " + obj.getString("question") + " and the answer is: " + obj.getString("sender"));
-                    text.setText(obj.getString("question"));
-                }
 
-            }
-        });
 
         yesbutton.setOnClickListener(new View.OnClickListener() {
             @Override
