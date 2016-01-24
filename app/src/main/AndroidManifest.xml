@@ -47,6 +47,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+
         <service android:name="com.parse.PushService" />
         <receiver android:name="com.parse.ParsePushBroadcastReceiver"
             android:exported="false">
