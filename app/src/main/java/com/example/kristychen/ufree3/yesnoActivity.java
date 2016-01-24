@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,7 +22,11 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParsePush;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 //import com.parse.Parse;
 //import com.parse.ParseInstallation;
@@ -30,15 +35,23 @@ import java.util.List;
 public class yesnoActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView text ;
+    TextView text;
 
-    Button button;
+
+    @Bind(R.id.yesButton)
+    Button yesbutton;
+
+    @Bind(R.id.noButton)
+    Button nobutton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sidebar_yesno);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -64,13 +77,35 @@ public class yesnoActivity extends AppCompatActivity
             public void done(List<ParseObject> objects, ParseException e) {
                 for (ParseObject obj : objects) {
                     Log.i("TEST", "The question is: " + obj.getString("question") + " and the answer is: " + obj.getString("sender"));
-                    text.append(obj.getString("question"));
+                    text.setText(obj.getString("question"));
                 }
+
             }
         });
 
+        yesbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseQuery<ParseInstallation> database = ParseQuery.getQuery(ParseInstallation.class);
+                ParseObject ans = new ParseObject("Response");
+                String yolo = text.getText().toString();
+                ans.put("answer", "Yes");
+                ans.put("question", yolo);
+                ans.saveInBackground();
+            }
+        });
 
-
+        nobutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseQuery<ParseInstallation> database = ParseQuery.getQuery(ParseInstallation.class);
+                ParseObject ans = new ParseObject("Response");
+                String yolo = text.getText().toString();
+                ans.put("answer", "No");
+                ans.put("question", yolo);
+                ans.saveInBackground();
+            }
+        });
 
 
 

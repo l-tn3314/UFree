@@ -25,12 +25,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_yes"
+        android:id="@+id/yesButton"
         android:layout_gravity="center" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/button_no"
+        android:id="@+id/noButton"
         android:autoLink="all"/>
 
 
