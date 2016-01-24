@@ -78,7 +78,7 @@ public class SidebarHomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         addListenerOnButton();
         addListenerOnButton2();
-
+        addListenerOnButton3();
 
 
         /*ParseQuery<ParseObject> questions = ParseQuery.getQuery("Question");
@@ -130,15 +130,18 @@ public class SidebarHomeActivity extends AppCompatActivity
         });
     }
 
-   /* public void addListnerOnButton3(){
+    public void addListenerOnButton3(){
         final Context context = this;
         button = (Button)findViewById(R.id.viewr);
         button.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View arg0) {
-                    Intent intent = new Intent(context, )
-                }
-    } */
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, resultActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 
 
     @Override
