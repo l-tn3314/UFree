@@ -49,6 +49,7 @@ public class SidebarHomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         addListenerOnButton();
         addListenerOnButton2();
+
         Parse.initialize(this, "SU7KXmgEwwa1zIlH0n5p36rQHpto6XMGiYfsLxyH", "TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7");
         ParseInstallation.getCurrentInstallation().saveInBackground();
         ParseInstallation.getCurrentInstallation().put("phonenumber", "3205587854");
@@ -63,6 +64,8 @@ public class SidebarHomeActivity extends AppCompatActivity
                 }
             }
         });
+
+
     }
 
 
@@ -90,6 +93,7 @@ public class SidebarHomeActivity extends AppCompatActivity
             }
         });
     }
+
 
 
     @Override

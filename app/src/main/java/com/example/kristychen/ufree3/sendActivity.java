@@ -62,6 +62,7 @@ public class sendActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,8 +147,7 @@ public class sendActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, SidebarHomeActivity.class);
-            startActivity(intent);
+
         } else if (id == R.id.nav_friend) {
 
         }
