@@ -6,6 +6,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -18,6 +19,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseException;
 
 import java.util.List;
+import java.util.ArrayList;
+
 
 import butterknife.ButterKnife;
 
@@ -58,14 +61,33 @@ public class resultActivity extends AppCompatActivity
           //  public void done(List<ParseObject> objects, ParseException e) {
                 ParseQuery<ParseObject> dbq1 = ParseQuery.getQuery("Question");
         try {
-            System.out.println(dbq1.getFirst().getString("question"));
-        }catch(Exception e){}
+            String ques = dbq.getFirst().getString("question");
+
+            dbr.whereEqualTo("question", ques); //query with y/n
+
+            ParseQuery<ParseObject> dbry = dbr.whereEqualTo("answer","Yes");
+
+            dbry.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
+                    List<String> responders = new ArrayList<String>();
+                    for (ParseObject obj : objects) {
+                        responders.add(obj.getString("responder"));
+                    }
+                    String joined = TextUtils.join(",",responders);
+                    System.out.println(joined);
+                    System.out.println(responders);
+                }
+            });
+        } catch(Exception e){}
           //  }
       //  });
 
         database.whereEqualTo("username", sender);
 
         System.out.println(database.whereEqualTo("username", sender));
+
+        text.append("Tina       Yes\n" + "Gabe      No");
 
 
     }
