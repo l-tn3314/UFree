@@ -80,11 +80,8 @@ public class sendActivity extends AppCompatActivity
                 String sender = msgU.getText().toString();
 
                 ParseQuery<ParseInstallation> database = ParseQuery.getQuery(ParseInstallation.class);
-                database.whereNotEqualTo("username", sender);
-
 
                 String[] step1Users = recipients.split(",");
-
                 ArrayList proUsers = new ArrayList();
 
                 for (int x = 0; x < step1Users.length; x++) {
@@ -97,7 +94,6 @@ public class sendActivity extends AppCompatActivity
                     push.setMessage(question);
                     push.setQuery(database);
                     push.sendInBackground();
-
 
                 }
 
