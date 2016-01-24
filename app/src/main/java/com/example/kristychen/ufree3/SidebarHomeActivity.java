@@ -24,6 +24,14 @@ import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.parse.ParseAnonymousUtils;
+import com.parse.ParseUser;
+
+
 import java.util.List;
 
 public class SidebarHomeActivity extends AppCompatActivity
@@ -33,10 +41,31 @@ public class SidebarHomeActivity extends AppCompatActivity
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sidebar_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Determine whether the current user is an anonymous user
+
+                    // If current user is NOT anonymous user
+                    // Get current user data from Parse.com
+        try {
+            Parse.initialize(this, "SU7KXmgEwwa1zIlH0n5p36rQHpto6XMGiYfsLxyH", "TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7");
+            ParseInstallation.getCurrentInstallation().saveInBackground();
+            ParseInstallation.getCurrentInstallation().put("phonenumber", "3205587854");
+        }
+        catch(Exception e){}
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+
+                        // Send logged in users to home page
+
+
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -49,24 +78,30 @@ public class SidebarHomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         addListenerOnButton();
         addListenerOnButton2();
-        Parse.initialize(this, "SU7KXmgEwwa1zIlH0n5p36rQHpto6XMGiYfsLxyH", "TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7");
-        ParseInstallation.getCurrentInstallation().saveInBackground();
 
 
-        ParseQuery<ParseObject> questions = ParseQuery.getQuery("Question");
+
+        /*ParseQuery<ParseObject> questions = ParseQuery.getQuery("Question");
         questions.whereContains("question", "easy");
-        questions.findInBackground(new FindCallback<ParseObject>() {
-            @Override
+         questions.findInBackground(new FindCallback<ParseObject>() {
+           @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 for (ParseObject obj : objects) {
                     Log.i("TEST", "The question is: " + obj.getString("question") + " and the answer is: " + obj.getString("answer"));
                 }
             }
-        });
+        });*/
 
 
+                    }
 
-
+                    else {
+            // Send user to LoginSignupActivity.class
+            Intent intent = new Intent(SidebarHomeActivity.this,
+                    loginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 
@@ -104,6 +139,7 @@ public class SidebarHomeActivity extends AppCompatActivity
                     Intent intent = new Intent(context, )
                 }
     } */
+
 
     @Override
     public void onBackPressed() {
