@@ -78,7 +78,7 @@
             android:value="TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7" />
         <meta-data android:name="com.parse.push.notification_icon"
             android:resource="@drawable/ic_friends"/>
-        <receiver
+ <!--       <receiver
             android:name="com.example.kristychen.ufree3.Receiver"
             android:exported="false" >
             <intent-filter>
@@ -86,7 +86,7 @@
                 <action android:name="com.parse.push.intent.DELETE" />
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
-        </receiver>
+        </receiver> -->
 
     </application>
 
