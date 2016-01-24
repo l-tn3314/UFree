@@ -1,25 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_sidebar_send"
-    android:gravity="center">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+android:gravity="center"
+tools:showIn="@layout/app_bar_sidebar_send"
+android:orientation="vertical"
+android:weightSum="1">
 
-    <EditText android:id="@+id/edit_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_message"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"/>
-    <Button
-        android:id="@+id/sendbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:layout_gravity="center" />
+<EditText
+    android:id="@+id/editText2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Your Name"
+    android:layout_gravity="center_horizontal"
+    android:layout_weight="0.20" />
+
+<EditText
+    android:id="@+id/editText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Add Friends Separated By Commas"
+    android:layout_gravity="center_horizontal"
+    android:layout_weight="0.20" />
+
+<EditText android:id="@+id/edit_message"
+    android:layout_width="fill_parent"
+    android:layout_height="86dp"
+    android:hint="Message"
+    android:layout_gravity="center_vertical"/>
+
+<Button
+    android:id="@+id/sendbutton"
+    android:layout_width="112dp"
+    android:layout_height="wrap_content"
+    android:text="@string/button_send"
+    android:layout_gravity="center" />
 
 </LinearLayout>
