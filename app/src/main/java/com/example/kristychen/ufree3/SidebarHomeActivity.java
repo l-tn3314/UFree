@@ -130,6 +130,15 @@ public class SidebarHomeActivity extends AppCompatActivity
         });
     }
 
+   /* public void addListnerOnButton3(){
+        final Context context = this;
+        button = (Button)findViewById(R.id.viewr);
+        button.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View arg0) {
+                    Intent intent = new Intent(context, )
+                }
+    } */
 
 
     @Override
