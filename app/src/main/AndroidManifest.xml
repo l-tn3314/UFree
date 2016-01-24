@@ -76,7 +76,8 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7" />
-
+        <meta-data android:name="com.parse.push.notification_icon"
+            android:resource="@drawable/ic_friends"/>
     </application>
 
 

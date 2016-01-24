@@ -17,7 +17,9 @@ android:weightSum="1">
     android:layout_height="wrap_content"
     android:hint="Your Name"
     android:layout_gravity="center_horizontal"
-    android:layout_weight="0.20" />
+    android:layout_weight="0.20"
+    android:imeOptions="actionNext"
+    android:singleLine="true"/>
 
 <EditText
     android:id="@+id/friends"
@@ -25,13 +27,17 @@ android:weightSum="1">
     android:layout_height="wrap_content"
     android:hint="Add Friends Separated By Commas"
     android:layout_gravity="center_horizontal"
-    android:layout_weight="0.20" />
+    android:layout_weight="0.20"
+    android:imeOptions="actionNext"
+    android:singleLine="true"/>
 
 <EditText android:id="@+id/question"
     android:layout_width="fill_parent"
     android:layout_height="86dp"
     android:hint="Message"
-    android:layout_gravity="center_vertical"/>
+    android:layout_gravity="center_vertical"
+    android:imeOptions="actionDone"
+    android:singleLine="true"/>
 
 <Button
     android:id="@+id/sendbutton"

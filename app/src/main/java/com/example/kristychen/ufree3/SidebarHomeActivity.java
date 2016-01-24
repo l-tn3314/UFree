@@ -51,7 +51,7 @@ public class SidebarHomeActivity extends AppCompatActivity
         addListenerOnButton2();
         Parse.initialize(this, "SU7KXmgEwwa1zIlH0n5p36rQHpto6XMGiYfsLxyH", "TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7");
         ParseInstallation.getCurrentInstallation().saveInBackground();
-        ParseInstallation.getCurrentInstallation().put("phonenumber", "3205587854");
+
 
         ParseQuery<ParseObject> questions = ParseQuery.getQuery("Question");
         questions.whereContains("question", "easy");
