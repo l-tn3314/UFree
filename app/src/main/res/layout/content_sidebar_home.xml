@@ -7,22 +7,55 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_sidebar_home"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#B0E0E6">
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="0" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:paddingTop="1dp"
+        android:src="@drawable/ic_logo" />
 
     <Button
         android:id="@+id/notifb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/notification" />
+        android:text="@string/notification"
+        android:textColor="#FFFAF0"
+        android:background="#087CC4"
+        android:width="350dp"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
     <Button
         android:id="@+id/sendm"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="@string/new_message" />
+        android:text="@string/new_message"
+        android:textColor="#FFFAF0"
+        android:background="#087CC4"
+        android:width="350dp"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.1dp"
+        android:layout_weight="1" />
     <Button
         android:id="@+id/viewr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View Results"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFFAF0"
+        android:background="#087CC4"
+        android:width="350dp"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="10" />
+
 </LinearLayout>

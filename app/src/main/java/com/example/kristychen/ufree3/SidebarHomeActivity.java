@@ -1,5 +1,6 @@
 package com.example.kristychen.ufree3;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.parse.ParseQuery;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseUser;
@@ -47,6 +49,7 @@ public class SidebarHomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_sidebar_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         // Determine whether the current user is an anonymous user
 
@@ -193,4 +196,6 @@ public class SidebarHomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

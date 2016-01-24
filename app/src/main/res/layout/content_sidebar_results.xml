@@ -14,6 +14,6 @@
         android:hint="Results"
         android:layout_weight="0.90"
         android:imeOptions="actionDone"
-        android:textSize="40dp" />
+        android:textSize="40dp"/>
 
 </LinearLayout>
