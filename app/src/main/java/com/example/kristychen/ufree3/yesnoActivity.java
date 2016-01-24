@@ -119,9 +119,9 @@ public class yesnoActivity extends AppCompatActivity
         int id = item.getItemId();
 
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
             finish();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_friend) {
 
 
         }
