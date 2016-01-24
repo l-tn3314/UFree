@@ -1,35 +1,34 @@
 package com.example.kristychen.ufree3;
 
 import android.os.Bundle;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Context;
-import android.content.Intent;
 import android.widget.Button;
-import android.view.View.OnClickListener;
+
+//import com.parse.Parse;
+//import com.parse.ParseInstallation;
 
 
-import com.parse.Parse;
-import com.parse.ParseInstallation;
-
-public class SidebarHomeActivity extends AppCompatActivity
+public class sendActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Button button;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sidebar_home);
+        setContentView(R.layout.activity_sidebar_send);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Log.i("TEST", "Hey");
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -40,36 +39,10 @@ public class SidebarHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        addListenerOnButton();
-        addListenerOnButton2();
-        Parse.initialize(this, "SU7KXmgEwwa1zIlH0n5p36rQHpto6XMGiYfsLxyH", "TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7");
-        ParseInstallation.getCurrentInstallation().saveInBackground();
-    }
 
 
-
-    public void addListenerOnButton(){
-        final Context context = this;
-        button = (Button)findViewById(R.id.notifb);
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(context, yesnoActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void addListenerOnButton2(){
-        final Context context = this;
-        button = (Button)findViewById(R.id.sendm);
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(context, sendActivity.class);
-                startActivity(intent);
-            }
-        });
+        //Parse.initialize(this, "SU7KXmgEwwa1zIlH0n5p36rQHpto6XMGiYfsLxyH", "TfmTRsQuZivXWmKXNN34nYbNF0ogouHm7FHelkN7");
+        //ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 
 
