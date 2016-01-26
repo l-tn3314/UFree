@@ -73,8 +73,9 @@ public class yesnoActivity extends AppCompatActivity
 
             ParseQuery<ParseObject> dbq = ParseQuery.getQuery("Question");
             String user = ParseUser.getCurrentUser().getString("username");
-            dbq.whereEqualTo("sender", user).orderByDescending("createdAt");
+            dbq.whereEqualTo("recipient", user).orderByDescending("createdAt");
             String ques = dbq.getFirst().getString("question");
+            System.out.println("lol" + ques);
             text.setText(ques);
         } catch (Exception e) {
         }
