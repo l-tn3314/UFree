@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0.07"
-        android:text="Enter Credentials"
+        android:text="Sign in with Facebook"
         android:textColor="#087CC4"
         android:textSize="50dp" />
     <EditText
